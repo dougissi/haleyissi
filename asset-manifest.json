@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/static/css/main.0c91ab65.css",
+    "main.js": "/static/js/main.d52b1e68.js",
+    "static/js/453.dbab58b7.chunk.js": "/static/js/453.dbab58b7.chunk.js",
+    "static/media/haleyissi-coffee-portrait.JPG": "/static/media/haleyissi-coffee-portrait.e995598be89a5c20983f.JPG",
+    "static/media/fellow-canister-white0.7.png": "/static/media/fellow-canister-white0.7.27cca8e8dbf1aa11840f.png",
+    "static/media/fellow-canister-black1.2.png": "/static/media/fellow-canister-black1.2.c75a46d804079a5eeeda.png",
+    "index.html": "/index.html",
+    "main.0c91ab65.css.map": "/static/css/main.0c91ab65.css.map",
+    "main.d52b1e68.js.map": "/static/js/main.d52b1e68.js.map",
+    "453.dbab58b7.chunk.js.map": "/static/js/453.dbab58b7.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0c91ab65.css",
+    "static/js/main.d52b1e68.js"
+  ]
+}
