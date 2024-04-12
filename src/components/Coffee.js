@@ -4,15 +4,17 @@ import LinkCard from './LinkCard';
 import CoffeeLogoImg from '../images/haleyissi-coffee-portrait.JPG';
 import FellowCanisterWhiteImg from '../images/fellow-canister-white0.7.png'
 import FellowCanisterBlackImg from '../images/fellow-canister-black1.2.png'
+import CoffeeProductsFetcher from './CoffeeProductsFetcher';
 
-export default function Coffee({ href, image, imageHeight, title, description }) {
+export default function Coffee() {
     return (
         <header className="App-header">
         <img src={CoffeeLogoImg} height="500" alt="haleyissi coffee portrait" />
         <h1>
           <Link href="https://instagram.com/issicoffee" target="_blank" useRef="noopener noreferrer">@issicoffee</Link> Gear
         </h1>
-        <Stack spacing={5}>
+        <CoffeeProductsFetcher/>
+        {/* <Stack spacing={5}>
             <LinkCard
               href='https://l.instagram.com/?u=https%3A%2F%2Famzn.to%2F48I9Qge&e=AT1VemF1c72P9DcXj0lPAoVRp9_Y_gAoCVqwoFgczr82jm1mA0RhtN8LU4ytSu0E_owC_nOE46wAU8JBL-NloNihXHtKMBjO'
               image='https://m.media-amazon.com/images/I/51BLvOcUjUL._AC_SL1428_.jpg'
@@ -38,7 +40,7 @@ export default function Coffee({ href, image, imageHeight, title, description })
               image='https://m.media-amazon.com/images/I/51VeHuW95LL._AC_SL1500_.jpg'
               title='Fellow Stagg EKG Kettle'
             />
-        </Stack>
+        </Stack> */}
         <p style={{maxWidth: "90%"}}>I earn a commission for items purchased through this site.</p>        
       </header>
     );
