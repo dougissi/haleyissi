@@ -3,24 +3,34 @@ import Papa from 'papaparse';
 import { Stack } from '@mui/material';
 import LinkCard from './LinkCard';
 
-const GOOGLE_SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vT23YXn_vr-8ahhQhxNXDJLi9ncssbPb808J57PyBoXh6fUVcnjwl5UKSzcZmiMkfx2eczpgcWMSeFD/pub?output=csv';
+const GOOGLE_SHEET_PRODUCTS_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vT23YXn_vr-8ahhQhxNXDJLi9ncssbPb808J57PyBoXh6fUVcnjwl5UKSzcZmiMkfx2eczpgcWMSeFD/pub?output=csv';
 
+function formatStrUrl(string) {
+    return string.toLowerCase().replace(/ /g, "-");
+}
 
 function CoffeeProductsFetcher() {
-    const [jsonData, setJsonData] = useState(null);
+    const [products, setProducts] = useState(null);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch(GOOGLE_SHEET_CSV_URL); // Replace 'API_ENDPOINT' with your API URL
+                const response = await fetch(GOOGLE_SHEET_PRODUCTS_CSV_URL); // Replace 'API_ENDPOINT' with your API URL
                 const csvData = await response.text();
                 // console.log(csvData)
                 
                 // Parse CSV to JSON
                 Papa.parse(csvData, {
                     complete: (result) => {
-                        console.log(result);
-                        setJsonData(result.data);
+                        console.log("csv result:")
+                        console.log(result.data);
+                        
+                        const grouped = Object.groupBy(result.data, ({ category }) => category);
+                        // console.log("grouped products:");
+                        // console.log(grouped);
+
+                        const groupedArr = Object.entries(grouped);
+                        setProducts(groupedArr);
                     },
                     header: true, // Treat the first row as headers
                 });
@@ -38,27 +48,42 @@ function CoffeeProductsFetcher() {
         // // Clean up function to clear interval when component unmounts
         // return () => clearInterval(intervalId);
         
-    }, []);  // Empty dependency array ensures useEffect runs only once after initial render
-
+    }, []);  // Empty dependency array ensures useEffect runs only once after initial render   
+    
     return (
         <div className="CoffeeProducts">
-            {jsonData ? (
-                <Stack spacing={5}>
-                    {jsonData.map((item, index) => (
-                        <div key={index}>
-                            {/* Render each item */}
-                            <LinkCard
-                                href={item.link}
-                                image={item.photo_url}
-                                title={item.title}
-                                description={item.description}
-                            />
-                        </div>
-                    ))}
-                </Stack>
+            {products ? (
+                <>
+                    <h2>Categories</h2>
+                    <ul style={{textAlign: "left"}}>
+                        {products.map(([category, x], ci) => (
+                            <li><a href={`#${formatStrUrl(category)}`}>{category}</a></li>
+                        ))}
+                    </ul>
+                    <div className="CategorySection">
+                        {products.map(([category, productArr], ci) => (
+                            <div key={`category${ci}`}>
+                                <h2 id={formatStrUrl(category)}>{category}</h2>
+                                <Stack spacing={5} style={{alignItems: 'center'}}>
+                                    {productArr.map((product, pi) => (
+                                        <div key={`product${pi}`}>
+                                            {/* Render each item */}
+                                            <LinkCard
+                                                href={product.link}
+                                                image={product.photo_url}
+                                                title={product.title}
+                                                description={product.description}
+                                            />
+                                        </div>
+                                    ))}
+                                </Stack>
+                            </div>
+                        ))}
+                    </div>
+                </>
             ) : (
                 <p>Loading...</p>
-            ) }
+            )}
         </div>
     );
 }
