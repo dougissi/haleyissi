@@ -4,6 +4,7 @@ Front End:
 * [ ] ensure product photos size correctly
 * [x] search bar
 * [x] remove react-search-box and react-select-search?
+* [x] Google Analytics
 
 Spreadsheet
 * [x] category conditional formatting if not present
