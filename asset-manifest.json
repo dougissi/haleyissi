@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/static/css/main.0c91ab65.css",
-    "main.js": "/static/js/main.6ad83768.js",
+    "main.js": "/static/js/main.337833fd.js",
     "static/js/453.dbab58b7.chunk.js": "/static/js/453.dbab58b7.chunk.js",
     "static/media/haleyissi-coffee-portrait-440kb.jpg": "/static/media/haleyissi-coffee-portrait-440kb.cd3af01ed82140f2b5df.jpg",
     "index.html": "/index.html",
     "main.0c91ab65.css.map": "/static/css/main.0c91ab65.css.map",
-    "main.6ad83768.js.map": "/static/js/main.6ad83768.js.map",
+    "main.337833fd.js.map": "/static/js/main.337833fd.js.map",
     "453.dbab58b7.chunk.js.map": "/static/js/453.dbab58b7.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.0c91ab65.css",
-    "static/js/main.6ad83768.js"
+    "static/js/main.337833fd.js"
   ]
 }
