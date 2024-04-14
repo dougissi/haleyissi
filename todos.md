@@ -1,8 +1,9 @@
 Front End:
 * [x] categories for products
-* [ ] smaller filesize of hero image
+* [x] smaller filesize of hero image
 * [ ] ensure product photos size correctly
-* [ ] search bar
+* [x] search bar
+* [x] remove react-search-box and react-select-search?
 
 Spreadsheet
 * [x] category conditional formatting if not present

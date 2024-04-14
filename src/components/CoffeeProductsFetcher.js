@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import Papa from 'papaparse';
-import { Stack } from '@mui/material';
+import { Box, Stack, Typography } from '@mui/material';
 import LinkCard from './LinkCard';
+import SearchIcon from '@mui/icons-material/Search';
+import TextField from '@mui/material/TextField';
+import Autocomplete from '@mui/material/Autocomplete';
+
 
 const GOOGLE_SHEET_PRODUCTS_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vT23YXn_vr-8ahhQhxNXDJLi9ncssbPb808J57PyBoXh6fUVcnjwl5UKSzcZmiMkfx2eczpgcWMSeFD/pub?output=csv';
 
@@ -9,7 +13,15 @@ function formatStrUrl(string) {
     return string.toLowerCase().replace(/ /g, "-");
 }
 
+function scrollToElement(id) {
+    const element = document.getElementById(id);
+    if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+    }
+}
+
 function CoffeeProductsFetcher() {
+    const [productData, setProductData] = useState(null);
     const [products, setProducts] = useState(null);
 
     useEffect(() => {
@@ -22,13 +34,15 @@ function CoffeeProductsFetcher() {
                 // Parse CSV to JSON
                 Papa.parse(csvData, {
                     complete: (result) => {
-                        console.log("csv result:")
-                        console.log(result.data);
-                        
-                        const grouped = Object.groupBy(result.data, ({ category }) => category);
-                        // console.log("grouped products:");
-                        // console.log(grouped);
+                        // console.log("csv result:")
+                        // console.log(result.data);
 
+                        // used for search bar
+                        const dataWithId = result.data.map((product, i) => ({id: i, ...product}));
+                        setProductData(dataWithId);
+
+                        // products grouped by category
+                        const grouped = Object.groupBy(dataWithId, ({ category }) => category);
                         const groupedArr = Object.entries(grouped);
                         setProducts(groupedArr);
                     },
@@ -50,24 +64,44 @@ function CoffeeProductsFetcher() {
         
     }, []);  // Empty dependency array ensures useEffect runs only once after initial render   
     
+    const handleSearchBarChange = (event, option) => {
+        if (option) {
+            console.log(option.title + " id: " + option.id);
+            scrollToElement(`product${option.id}`)
+        }
+    }
+
     return (
         <div className="CoffeeProducts">
             {products ? (
                 <>
+                    {/* Search Box */}
+                    <Autocomplete
+                        id="grouped-demo"
+                        options={productData}
+                        groupBy={(option) => option.category}
+                        getOptionLabel={(option) => option.title}
+                        sx={{ width: "100%" }}
+                        renderInput={(params) => <TextField {...params} label={<Box display="flex" alignItems="center"><SearchIcon/><Typography>Search Gear</Typography></Box>} />}
+                        onChange={handleSearchBarChange}
+                    />
+
+                    {/* Quick Links for Categories */}
                     <h2>Categories</h2>
                     <ul style={{textAlign: "left"}}>
                         {products.map(([category, x], ci) => (
-                            <li><a href={`#${formatStrUrl(category)}`}>{category}</a></li>
+                            <li key={`categoryLink${ci}`}><a href={`#${formatStrUrl(category)}`}>{category}</a></li>
                         ))}
                     </ul>
+
+                    {/* Product Cards by Category */}
                     <div className="CategorySection">
                         {products.map(([category, productArr], ci) => (
                             <div key={`category${ci}`}>
                                 <h2 id={formatStrUrl(category)}>{category}</h2>
                                 <Stack spacing={5} style={{alignItems: 'center'}}>
                                     {productArr.map((product, pi) => (
-                                        <div key={`product${pi}`}>
-                                            {/* Render each item */}
+                                        <div key={`product${product.id}`} id={`product${product.id}`}>
                                             <LinkCard
                                                 href={product.link}
                                                 image={product.photo_url}
