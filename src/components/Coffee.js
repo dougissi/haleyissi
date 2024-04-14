@@ -1,9 +1,7 @@
 import * as React from 'react';
 import { Stack, Link } from '@mui/material';
 import LinkCard from './LinkCard';
-import CoffeeLogoImg from '../images/haleyissi-coffee-portrait.JPG';
-import FellowCanisterWhiteImg from '../images/fellow-canister-white0.7.png'
-import FellowCanisterBlackImg from '../images/fellow-canister-black1.2.png'
+import CoffeeLogoImg from '../images/haleyissi-coffee-portrait-440kb.jpg';
 import CoffeeProductsFetcher from './CoffeeProductsFetcher';
 
 export default function Coffee() {
