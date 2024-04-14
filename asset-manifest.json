@@ -1,18 +1,16 @@
 {
   "files": {
     "main.css": "/static/css/main.0c91ab65.css",
-    "main.js": "/static/js/main.c22a55d3.js",
+    "main.js": "/static/js/main.6ad83768.js",
     "static/js/453.dbab58b7.chunk.js": "/static/js/453.dbab58b7.chunk.js",
-    "static/media/haleyissi-coffee-portrait.JPG": "/static/media/haleyissi-coffee-portrait.e995598be89a5c20983f.JPG",
-    "static/media/fellow-canister-white0.7.png": "/static/media/fellow-canister-white0.7.27cca8e8dbf1aa11840f.png",
-    "static/media/fellow-canister-black1.2.png": "/static/media/fellow-canister-black1.2.c75a46d804079a5eeeda.png",
+    "static/media/haleyissi-coffee-portrait-440kb.jpg": "/static/media/haleyissi-coffee-portrait-440kb.cd3af01ed82140f2b5df.jpg",
     "index.html": "/index.html",
     "main.0c91ab65.css.map": "/static/css/main.0c91ab65.css.map",
-    "main.c22a55d3.js.map": "/static/js/main.c22a55d3.js.map",
+    "main.6ad83768.js.map": "/static/js/main.6ad83768.js.map",
     "453.dbab58b7.chunk.js.map": "/static/js/453.dbab58b7.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.0c91ab65.css",
-    "static/js/main.c22a55d3.js"
+    "static/js/main.6ad83768.js"
   ]
 }
