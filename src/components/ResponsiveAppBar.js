@@ -13,6 +13,7 @@ import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 // import AdbIcon from '@mui/icons-material/Adb';
 import { Link } from 'react-router-dom'
+import logo from '../images/haleyissi-logo.png';
 
 
 const pages = [
@@ -20,6 +21,8 @@ const pages = [
     { text: 'Kitchen', href: '/kitchen'},
 ];
 // const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+
+const logoImg = <img src={logo} height={30} style={{padding: "10px"}} alt={'HaleyIssi Logo'} />;
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -44,6 +47,7 @@ function ResponsiveAppBar() {
     <AppBar position="static" style={{ background: 'none', color: "black" }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
+          {logoImg}
           {/* <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} /> */}
           <Typography
             variant="h6"
