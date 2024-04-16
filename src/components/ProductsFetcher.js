@@ -7,8 +7,6 @@ import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 
 
-const GOOGLE_SHEET_PRODUCTS_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vT23YXn_vr-8ahhQhxNXDJLi9ncssbPb808J57PyBoXh6fUVcnjwl5UKSzcZmiMkfx2eczpgcWMSeFD/pub?output=csv';
-
 function formatStrUrl(string) {
     return string.toLowerCase().replace(/ /g, "-");
 }
@@ -20,14 +18,14 @@ function scrollToElement(id) {
     }
 }
 
-function CoffeeProductsFetcher() {
+function ProductsFetcher({googleSheetsURL}) {
     const [productData, setProductData] = useState(null);
     const [products, setProducts] = useState(null);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch(GOOGLE_SHEET_PRODUCTS_CSV_URL); // Replace 'API_ENDPOINT' with your API URL
+                const response = await fetch(googleSheetsURL);
                 const csvData = await response.text();
                 // console.log(csvData)
                 
@@ -62,7 +60,7 @@ function CoffeeProductsFetcher() {
         // // Clean up function to clear interval when component unmounts
         // return () => clearInterval(intervalId);
         
-    }, []);  // Empty dependency array ensures useEffect runs only once after initial render   
+    }, [googleSheetsURL]);
     
     const handleSearchBarChange = (event, option) => {
         if (option) {
@@ -72,7 +70,7 @@ function CoffeeProductsFetcher() {
     }
 
     return (
-        <div className="CoffeeProducts">
+        <div className="Products">
             {products ? (
                 <>
                     {/* Search Box */}
@@ -122,4 +120,4 @@ function CoffeeProductsFetcher() {
     );
 }
 
-export default CoffeeProductsFetcher;
+export default ProductsFetcher;
