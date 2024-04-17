@@ -12,17 +12,14 @@ import Button from '@mui/material/Button';
 // import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 // import AdbIcon from '@mui/icons-material/Adb';
-import { Link } from 'react-router-dom'
-import logo from '../images/haleyissi-logo.png';
-
+import { Link } from 'react-router-dom';
+import LogoIcon from './LogoIcon';
 
 const pages = [
     { text: 'Coffee', href: '/coffee' },
     { text: 'Kitchen', href: '/kitchen'},
 ];
 // const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
-
-const logoImg = <img src={logo} height={30} style={{padding: "10px"}} alt={'HaleyIssi Logo'} />;
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -43,11 +40,19 @@ function ResponsiveAppBar() {
   //   setAnchorElUser(null);
   // };
 
+  const styles = {
+    logoStyles: {
+      padding: "10px", 
+      height: "35", 
+      width: "35"
+    }
+  }
+
   return (
     <AppBar position="static" style={{ background: 'none', color: "black" }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          {logoImg}
+          <LogoIcon style={styles.logoStyles} sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
           {/* <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} /> */}
           <Typography
             variant="h6"
@@ -105,6 +110,7 @@ function ResponsiveAppBar() {
               ))}
             </Menu>
           </Box>
+          <LogoIcon style={styles.logoStyles} sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
           {/* <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} /> */}
           <Typography
             variant="h5"
