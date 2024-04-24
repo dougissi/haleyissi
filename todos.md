@@ -9,10 +9,11 @@ Front End:
 * [x] nav bar
 * [ ] underline current page in app bar?
 * [ ] Homepage
+* [ ] Media kit / inquiries page
 
 Metadata:
-* [ ] site description
-* [ ] appropriate share icon (at least for Apple, ideally Android too)
+* [x] site description
+* [x] appropriate share icon (at least for Apple, ideally Android too)
 
 Spreadsheet
 * [x] category conditional formatting if not present
