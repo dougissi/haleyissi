@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/static/css/main.0c91ab65.css",
+    "main.js": "/static/js/main.52c2effa.js",
+    "static/js/453.dbab58b7.chunk.js": "/static/js/453.dbab58b7.chunk.js",
+    "static/media/haleyissi-kitchen-hero-530kb.jpg": "/static/media/haleyissi-kitchen-hero-530kb.f5cab61241e46af4f209.jpg",
+    "static/media/haleyissi-coffee-portrait-440kb.jpg": "/static/media/haleyissi-coffee-portrait-440kb.cd3af01ed82140f2b5df.jpg",
+    "index.html": "/index.html",
+    "main.0c91ab65.css.map": "/static/css/main.0c91ab65.css.map",
+    "main.52c2effa.js.map": "/static/js/main.52c2effa.js.map",
+    "453.dbab58b7.chunk.js.map": "/static/js/453.dbab58b7.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0c91ab65.css",
+    "static/js/main.52c2effa.js"
+  ]
+}
